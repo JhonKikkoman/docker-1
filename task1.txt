@@ -1,0 +1,98 @@
+Command - docker pull busy box
+------------------------
+Using default tag: latest
+latest: Pulling from library/busybox
+ec562eabd705: Pull complete
+Digest: sha256:9ae97d36d26566ff84e8893c64a6dc4fe8ca6d1144bf5b87b2b85a32def253c7
+Status: Downloaded newer image for busybox:latest
+docker.io/library/busybox:latest
+-----------------------
+Command  - docker images
+-----------------------
+REPOSITORY               TAG       IMAGE ID       CREATED         SIZE
+busybox                  latest    65ad0d468eb1   13 months ago   4.26MB
+------------------------
+Command - docker run --name pinger -it busybox ping -c 7 netology.ru
+------------------------
+PING netology.ru (188.114.98.224): 56 data bytes
+64 bytes from 188.114.98.224: seq=0 ttl=63 time=112.911 ms
+64 bytes from 188.114.98.224: seq=1 ttl=63 time=76.249 ms
+64 bytes from 188.114.98.224: seq=2 ttl=63 time=75.303 ms
+64 bytes from 188.114.98.224: seq=3 ttl=63 time=74.338 ms
+64 bytes from 188.114.98.224: seq=4 ttl=63 time=101.112 ms
+64 bytes from 188.114.98.224: seq=5 ttl=63 time=72.294 ms
+64 bytes from 188.114.98.224: seq=6 ttl=63 time=74.957 ms
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 72.294/83.880/112.911 ms
+--------------------------
+Command - docker ps --all
+-------------------------------
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS                     PORTS     NAMES
+2f6f3f14727d   busybox   "ping -c 7 netology.…"   7 minutes ago   Exited (0) 7 minutes ago             pinger
+----------------------------
+Command - docker logs pinger
+---------------------------
+PING netology.ru (188.114.98.224): 56 data bytes
+64 bytes from 188.114.98.224: seq=0 ttl=63 time=112.911 ms
+64 bytes from 188.114.98.224: seq=1 ttl=63 time=76.249 ms
+64 bytes from 188.114.98.224: seq=2 ttl=63 time=75.303 ms
+64 bytes from 188.114.98.224: seq=3 ttl=63 time=74.338 ms
+64 bytes from 188.114.98.224: seq=4 ttl=63 time=101.112 ms
+64 bytes from 188.114.98.224: seq=5 ttl=63 time=72.294 ms
+64 bytes from 188.114.98.224: seq=6 ttl=63 time=74.957 ms
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 72.294/83.880/112.911 ms
+------------------------------------------------
+Command - docker start pinger
+--------------------
+pinger
+---------------------
+Command - docker ps -all
+-----------------------
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                     PORTS     NAMES
+2f6f3f14727d   busybox   "ping -c 7 netology.…"   17 minutes ago   Exited (0) 2 minutes ago             pinger
+--------------------
+Command - docker logs pinger
+---------------------------
+PING netology.ru (188.114.98.224): 56 data bytes
+64 bytes from 188.114.98.224: seq=0 ttl=63 time=112.911 ms
+64 bytes from 188.114.98.224: seq=1 ttl=63 time=76.249 ms
+64 bytes from 188.114.98.224: seq=2 ttl=63 time=75.303 ms
+64 bytes from 188.114.98.224: seq=3 ttl=63 time=74.338 ms
+64 bytes from 188.114.98.224: seq=4 ttl=63 time=101.112 ms
+64 bytes from 188.114.98.224: seq=5 ttl=63 time=72.294 ms
+64 bytes from 188.114.98.224: seq=6 ttl=63 time=74.957 ms
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 72.294/83.880/112.911 ms
+PING netology.ru (188.114.98.224): 56 data bytes
+64 bytes from 188.114.98.224: seq=0 ttl=63 time=74.902 ms
+64 bytes from 188.114.98.224: seq=1 ttl=63 time=84.665 ms
+64 bytes from 188.114.98.224: seq=2 ttl=63 time=71.037 ms
+64 bytes from 188.114.98.224: seq=3 ttl=63 time=71.522 ms
+64 bytes from 188.114.98.224: seq=4 ttl=63 time=78.903 ms
+64 bytes from 188.114.98.224: seq=5 ttl=63 time=71.710 ms
+64 bytes from 188.114.98.224: seq=6 ttl=63 time=71.809 ms
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 71.037/74.935/84.665 ms
+-------------------------------
+Определите по логам общее количество запусков команды ping и какое общее количество отправленых запросов - 14 и 2
+--------------------------------
+Command - docker rm 2f6
+--------------------------------
+2f6
+-------------------------------
+Commnad - docker rmi busybox
+------------------------------
+Untagged: busybox:latest
+Untagged: busybox@sha256:9ae97d36d26566ff84e8893c64a6dc4fe8ca6d1144bf5b87b2b85a32def253c7
+Deleted: sha256:65ad0d468eb1c558bf7f4e64e790f586e9eda649ee9f130cd0e835b292bbc5ac
+Deleted: sha256:d51af96cf93e225825efd484ea457f867cb2b967f7415b9a3b7e65a2f803838a
+
